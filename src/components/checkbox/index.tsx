@@ -1,3 +1,4 @@
+import { FontAwesome5 } from "@expo/vector-icons";
 import React, { useRef } from "react";
 import {
   TouchableOpacity,
@@ -7,12 +8,10 @@ import {
   Text,
   View,
 } from "react-native";
-import { FontAwesome5 } from "@expo/vector-icons";
+
 import { colors } from "../../constants/colors";
 
-
-
- const CustomCheckbox = ({ checked, onChange, text }: any) => {
+const CustomCheckbox = ({ checked, onChange, text }: any) => {
   const scaleValue = useRef(new Animated.Value(0)).current;
 
   const toggleCheckbox = () => {
@@ -38,22 +37,18 @@ import { colors } from "../../constants/colors";
         alignItems: "center",
         marginVertical: 3,
         //borderWidth: 1,
-      }}
-    >
+      }}>
       <TouchableOpacity activeOpacity={0.6} onPress={toggleCheckbox}>
         <Animated.View
           style={[
             styles.checkbox,
             {
               transform: [{ scale: animatedScale }],
-              backgroundColor: checked
-                ? colors.primary
-                : "transparent",
+              backgroundColor: checked ? colors.primary : "transparent",
             },
-          ]}
-        >
+          ]}>
           {checked && (
-            <FontAwesome5 name="check" size={16} color="black" />
+            <FontAwesome5 name="check" size={16} color={colors.secondary} />
           )}
         </Animated.View>
       </TouchableOpacity>

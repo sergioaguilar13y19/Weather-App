@@ -1,12 +1,21 @@
 import React from "react";
-import { SafeAreaView, Text, TouchableOpacity, View } from "react-native";
+import {
+  Alert,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 import { styles } from "./style";
 import { Checkbox, Input } from "../../../components";
-import { words } from "../../../constants";
+import { words, alerts } from "../../../constants";
 import { PropsAuthStack } from "../../../navigation/auth/types";
 
 const { title, placeHolder, actionShowPassword, btn } = words.es.auth.login;
+const { warns } = words.es;
+
+const isEmpty = (value: string) => !value.trim().length;
 
 const Login = ({ navigation }: PropsAuthStack) => {
   const [email, setEmail] = React.useState("");
@@ -16,6 +25,10 @@ const Login = ({ navigation }: PropsAuthStack) => {
   const seePassword = () => setShowPassword((prev) => !prev);
 
   const handleLogin = () => {
+    if (isEmpty(email)) {
+      alerts.empty(warns.email);
+      return;
+    }
     console.log("login");
   };
   const handleRegister = () => {

@@ -4,8 +4,17 @@ import React from "react";
 import { AuthStackParamList } from "./types";
 import { words } from "../../constants";
 import { Login, Register } from "../../screens";
+import { colors } from "../../constants/colors";
+
 const Stack = createNativeStackNavigator<AuthStackParamList>();
 const { title } = words.es.auth.login;
+
+const configRegister = {
+  headerTransparent: true,
+  headerBackTitle: title,
+  title: "",
+};
+
 export const AuthStack = () => {
   return (
     <Stack.Navigator>
@@ -19,9 +28,9 @@ export const AuthStack = () => {
         component={Register}
         options={{
           headerTransparent: true,
-          headerBackTitleVisible: true,
           headerBackTitle: title,
           title: "",
+          headerTintColor: colors.secondary,
         }}
       />
     </Stack.Navigator>

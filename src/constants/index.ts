@@ -1,3 +1,5 @@
+import { Alert } from "react-native";
+
 export const words = {
   es: {
     auth: {
@@ -8,10 +10,10 @@ export const words = {
           email: "example@example.com",
           password: "*********",
         },
-        btn:{
+        btn: {
           login: "Iniciar sesión",
           register: "Registrarse",
-        }
+        },
       },
       register: {
         title: "Registrarse",
@@ -24,5 +26,15 @@ export const words = {
         },
       },
     },
+    warns: {
+      empty: "rellene todos los campos",
+      email: "el email no es valido",
+      password: `la contraseña no es valida`,
+    },
   },
+};
+
+export const alerts = {
+  empty: (message: string) =>
+    Alert.alert("Error", message, [{ text: "OK", style: "cancel" }]),
 };

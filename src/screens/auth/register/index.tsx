@@ -1,10 +1,14 @@
-import React from 'react'
-import { Text } from 'react-native'
+import React from "react";
+import { SafeAreaView, Text } from "react-native";
+
+import { styles } from "./style";
 
 const Register = () => {
   return (
-    <Text>Register</Text>
-  )
-}
+    <SafeAreaView style={styles.container}>
+      <Text>Register</Text>
+    </SafeAreaView>
+  );
+};
 
-export default Register
+export default Register;
