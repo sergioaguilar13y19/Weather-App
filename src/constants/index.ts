@@ -10,6 +10,10 @@ export const words = {
           email: "example@example.com",
           password: "*********",
         },
+        inputName: {
+          email: "Correo electrónico",
+          password: "Contraseña",
+        },
         btn: {
           login: "Iniciar sesión",
           register: "Registrarse",
@@ -27,14 +31,14 @@ export const words = {
       },
     },
     warns: {
-      empty: "rellene todos los campos",
+      empty: "Rellene todos los campos",
       email: "El email no es valido",
-      password: `la contraseña no es valida`,
+      password: `La contraseña no es valida`,
     },
   },
 };
 
 export const alerts = {
   empty: (message: string) =>
-    Alert.alert("Error", message, [{ text: "Aceptar", style: "cancel" }]),
+    Alert.alert("Error", message, [{ text: "Aceptar" }]),
 };

@@ -1,12 +1,10 @@
 import React from "react";
-import {
-  TextInput,
-  TextInputProps,
-  KeyboardAvoidingView,
-  Platform,
-} from "react-native";
+import { Text, TextInput, TextInputProps } from "react-native";
 
 import { styles } from "./style";
+type customProps = { name: string };
+type Props = TextInputProps & customProps;
+
 const Input = ({
   placeholder,
   onChangeText,
@@ -14,10 +12,11 @@ const Input = ({
   secureTextEntry,
   keyboardType,
   autoComplete,
-}: TextInputProps) => {
+  name,
+}: Props) => {
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}>
+    <>
+      <Text style={styles.text}>{name}</Text>
       <TextInput
         value={value}
         onChangeText={onChangeText}
@@ -27,7 +26,7 @@ const Input = ({
         keyboardType={keyboardType}
         autoComplete={autoComplete}
       />
-    </KeyboardAvoidingView>
+    </>
   );
 };
 

@@ -1,18 +1,15 @@
 import React from "react";
-import {
-  Alert,
-  SafeAreaView,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import { styles } from "./style";
+import { isValidEmail, isValidPassword } from "..";
 import { Checkbox, Input } from "../../../components";
 import { words, alerts } from "../../../constants";
 import { PropsAuthStack } from "../../../navigation/auth/types";
 
-const { title, placeHolder, actionShowPassword, btn } = words.es.auth.login;
+const { title, placeHolder, actionShowPassword, btn, inputName } =
+  words.es.auth.login;
 const { warns } = words.es;
 
 const isEmpty = (value: string) => !value.trim().length;
@@ -25,14 +22,13 @@ const Login = ({ navigation }: PropsAuthStack) => {
   const seePassword = () => setShowPassword((prev) => !prev);
 
   const handleLogin = () => {
-    if (isEmpty(email)) {
-      alerts.empty(warns.email);
+    if (isEmpty(email) && isEmpty(password)) {
+      alerts.empty(warns.empty);
       return;
     }
     console.log("login");
   };
   const handleRegister = () => {
-    console.log("register");
     navigation.navigate("Register");
   };
 
@@ -46,6 +42,7 @@ const Login = ({ navigation }: PropsAuthStack) => {
           placeholder={placeHolder.email}
           keyboardType="email-address"
           autoComplete="off"
+          name={inputName.email}
         />
         <Input
           value={password}
@@ -53,6 +50,7 @@ const Login = ({ navigation }: PropsAuthStack) => {
           placeholder={placeHolder.password}
           secureTextEntry={!showPassword}
           autoComplete="off"
+          name={inputName.password}
         />
         <Checkbox
           checked={showPassword}
@@ -60,12 +58,16 @@ const Login = ({ navigation }: PropsAuthStack) => {
           text={actionShowPassword}
         />
       </View>
-      <TouchableOpacity style={styles.buttonContainer} onPress={handleLogin}>
-        <Text style={styles.buttonText}>{btn.login}</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.buttonContainer} onPress={handleRegister}>
-        <Text style={styles.buttonText}>{btn.register}</Text>
-      </TouchableOpacity>
+      <View style={styles.bodyContainer}>
+        <TouchableOpacity style={styles.buttonContainer} onPress={handleLogin}>
+          <Text style={styles.buttonText}>{btn.login}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.buttonContainer}
+          onPress={handleRegister}>
+          <Text style={styles.buttonText}>{btn.register}</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };

@@ -1,7 +1,8 @@
 import { Appearance } from "react-native";
 
 export const colorScheme = Appearance.getColorScheme() || "light";
-const isDarkMode = colorScheme === "dark";
+const isDarkMode = colorScheme === "dark"
+export const statusBarStyle = isDarkMode ? "light" : "dark";
 console.log(colorScheme);
 
 export const colors = {

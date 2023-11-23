@@ -1,18 +1,20 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
+import { Platform } from "react-native";
 
 import { AuthStackParamList } from "./types";
 import { words } from "../../constants";
-import { Login, Register } from "../../screens";
 import { colors } from "../../constants/colors";
+import { Login, Register } from "../../screens";
 
 const Stack = createNativeStackNavigator<AuthStackParamList>();
 const { title } = words.es.auth.login;
-
+const isIos = Platform.OS === "ios";
 const configRegister = {
-  headerTransparent: true,
+  headerTransparent: isIos,
   headerBackTitle: title,
   title: "",
+  headerTintColor: colors.secondary,
 };
 
 export const AuthStack = () => {
@@ -26,12 +28,7 @@ export const AuthStack = () => {
       <Stack.Screen
         name="Register"
         component={Register}
-        options={{
-          headerTransparent: true,
-          headerBackTitle: title,
-          title: "",
-          headerTintColor: colors.secondary,
-        }}
+        options={configRegister}
       />
     </Stack.Navigator>
   );
