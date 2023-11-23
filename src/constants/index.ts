@@ -28,7 +28,7 @@ export const words = {
     },
     warns: {
       empty: "rellene todos los campos",
-      email: "el email no es valido",
+      email: "El email no es valido",
       password: `la contraseña no es valida`,
     },
   },
@@ -36,5 +36,5 @@ export const words = {
 
 export const alerts = {
   empty: (message: string) =>
-    Alert.alert("Error", message, [{ text: "OK", style: "cancel" }]),
+    Alert.alert("Error", message, [{ text: "Aceptar", style: "cancel" }]),
 };
