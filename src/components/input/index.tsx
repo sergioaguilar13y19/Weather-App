@@ -5,12 +5,15 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
+
 import { styles } from "./style";
 const Input = ({
   placeholder,
   onChangeText,
   value,
   secureTextEntry,
+  keyboardType,
+  autoComplete,
 }: TextInputProps) => {
   return (
     <KeyboardAvoidingView
@@ -20,6 +23,9 @@ const Input = ({
         onChangeText={onChangeText}
         style={styles.input}
         secureTextEntry={secureTextEntry}
+        placeholder={placeholder}
+        keyboardType={keyboardType}
+        autoComplete={autoComplete}
       />
     </KeyboardAvoidingView>
   );

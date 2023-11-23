@@ -5,18 +5,22 @@ export const words = {
         title: "Iniciar sesión",
         actionShowPassword: "Mostrar contraseña",
         placeHolder: {
-          email: "Correo electrónico",
-          password: "Contraseña",
+          email: "example@example.com",
+          password: "*********",
         },
+        btn:{
+          login: "Iniciar sesión",
+          register: "Registrarse",
+        }
       },
       register: {
         title: "Registrarse",
         action: "Guardar",
         placeHolder: {
-          email: "Correo electrónico",
+          email: "example@example.com",
           name: "Nombre",
-          password: "Contraseña",
-          confirmPassword: "Confirmar contraseña",
+          password: "**********",
+          confirmPassword: "**********",
         },
       },
     },
