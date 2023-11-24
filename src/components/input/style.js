@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     borderColor: colors.secondary,
     color: colors.secondary,
     marginVertical: 10,
-    //width: '90%',
+    width: '90%',
   },
   text: {
     color: colors.secondary,

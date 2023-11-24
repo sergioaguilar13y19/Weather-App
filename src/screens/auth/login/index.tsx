@@ -1,6 +1,9 @@
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useSelector, useDispatch } from "react-redux";
+import { setToken } from "../../../features/auth/authSlice";
+import { RootState } from "../../../app/store";
 
 import { styles } from "./style";
 import { isValidEmail, isValidPassword } from "..";
@@ -15,6 +18,9 @@ const { warns } = words.es;
 const isEmpty = (value: string) => !value.trim().length;
 
 const Login = ({ navigation }: PropsAuthStack) => {
+  const dispatch = useDispatch();
+  const { users } = useSelector((state: RootState) => state.auth);
+  console.log(users, "users");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [showPassword, setShowPassword] = React.useState(false);
@@ -26,7 +32,17 @@ const Login = ({ navigation }: PropsAuthStack) => {
       alerts.empty(warns.empty);
       return;
     }
-    console.log("login");
+    const myUser = users.find((user) => user.email === email.toLowerCase());
+    if (!myUser) {
+      alerts.empty(warns.userNoExist);
+      return;
+    }
+    const myPassword = myUser?.password === password;
+    if (!myPassword) {
+      alerts.empty(warns.samePassword);
+      return;
+    }
+    dispatch(setToken({ token: myUser.email, name: myUser.name }));
   };
   const handleRegister = () => {
     navigation.navigate("Register");

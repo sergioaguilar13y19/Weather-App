@@ -11,7 +11,7 @@ const Stack = createNativeStackNavigator<AuthStackParamList>();
 const { title } = words.es.auth.login;
 const isIos = Platform.OS === "ios";
 const configRegister = {
-  headerTransparent: isIos,
+  headerTransparent: true,
   headerBackTitle: title,
   title: "",
   headerTintColor: colors.secondary,
