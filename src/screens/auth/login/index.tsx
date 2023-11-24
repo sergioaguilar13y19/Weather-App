@@ -20,11 +20,9 @@ const isEmpty = (value: string) => !value.trim().length;
 const Login = ({ navigation }: PropsAuthStack) => {
   const dispatch = useDispatch();
   const { users } = useSelector((state: RootState) => state.auth);
-  console.log(users, "users");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [showPassword, setShowPassword] = React.useState(false);
-
   const seePassword = () => setShowPassword((prev) => !prev);
 
   const handleLogin = () => {

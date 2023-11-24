@@ -5,6 +5,7 @@ import { RootState } from "../../../app/store";
 import { useSelector, useDispatch } from "react-redux";
 import { setUsers } from "../../../features/auth/authSlice";
 import { PropsAuthStack } from "../../../navigation/auth/types";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { styles } from "./style";
 import { Input, Button } from "../../../components";
@@ -25,6 +26,15 @@ const Register = ({ navigation }: PropsAuthStack) => {
     return isEmpty(name) || isEmpty(email) || isEmpty(password);
   };
   const diferentPassword = () => password !== passwordValidate;
+
+  const saveUsers = async (users: any) => {
+    try {
+      const jsonValue = JSON.stringify(users);
+      await AsyncStorage.setItem("@users", jsonValue);
+    } catch (e) {
+      console.warn(e);
+    }
+  };
   const handleSave = () => {
     if (validateInputs()) {
       alerts.empty(warns.empty);
@@ -40,6 +50,7 @@ const Register = ({ navigation }: PropsAuthStack) => {
       return;
     }
     const newUser = { name, email: email.toLowerCase(), password };
+    saveUsers([...users, newUser]);
     dispatch(setUsers([...users, newUser]));
     navigation.goBack();
   };
