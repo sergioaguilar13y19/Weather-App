@@ -44,6 +44,12 @@ export const words = {
       userNoExist: "El usuario No existe",
       userExist: "El usuario ya existe",
     },
+    cardBody: {
+      humidity: "Humedad",
+      airQuality: "Calidad del aire",
+      wind: "Viento",
+      precipitation: "Precipitación",
+    },
   },
 };
 
