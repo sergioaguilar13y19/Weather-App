@@ -10,7 +10,14 @@ type Props = {
   isLoading?: boolean;
 };
 
-const Card = ({ temp_c, temp_f, name, region, icon, isLoading }: Props) => {
+const Card = ({
+  temp_c,
+  temp_f,
+  name,
+  region,
+  icon,
+  isLoading = false,
+}: Props) => {
   const TEMP_C = Math.round(temp_c);
   const TEMP_F = Math.round(temp_f);
   const TIME_TXT = `Temperatura: ${TEMP_C}C / ${TEMP_F}F`;

@@ -7,7 +7,7 @@ const ForeCastDay = ({ forecast }: WeatherForecast) => {
   console.log(forecastday);
   return (
     <View>
-      {forecastday?.map(({ date }, index) => <Text key={index}>{date}</Text>)}
+      {forecastday?.map(({ date}, index) => <Text key={index}>{date}</Text>)}
     </View>
   );
 };
