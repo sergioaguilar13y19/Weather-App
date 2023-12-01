@@ -23,7 +23,7 @@ const Card = ({
   const TIME_TXT = `Temperatura: ${TEMP_C}C / ${TEMP_F}F`;
   return (
     <View style={styles.container}>
-      <Image source={{ uri: icon }} style={styles.image} />
+      <Image source={{ uri: `https:${icon}` }} style={styles.image} />
       <View style={styles.textContainer}>
         <Text style={styles.text}>{TIME_TXT}</Text>
         <Text style={styles.text}>

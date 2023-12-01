@@ -6,6 +6,6 @@ export const stylesGlobal = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.tertiary,
-    alignItems: "center",
+    justifyContent: "center",
   },
 });
