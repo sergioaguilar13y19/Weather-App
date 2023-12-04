@@ -40,7 +40,7 @@ const Login = ({ navigation }: PropsAuthStack) => {
       alerts.empty(warns.samePassword);
       return;
     }
-    dispatch(setToken({ token: myUser.email, name: myUser.name }));
+    dispatch(setToken({ token: myUser.email, name: myUser.name}));
   };
   const handleRegister = () => {
     navigation.navigate("Register");

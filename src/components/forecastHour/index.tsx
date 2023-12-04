@@ -16,11 +16,28 @@ const getHour = (prop: number) => {
   const time = hours + am_pm;
   return time;
 };
+const formatDate = (date: string) => {
+  const fecha = new Date(date);
+  const options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  const fechaFormateada = fecha.toLocaleDateString("es-ES", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 
+  return fechaFormateada; // Imprime: "domingo 3 de diciembre de 2023"
+};
 const ForecastHour = ({ hour, date }: props) => {
+  console.log(date);
   return (
     <>
-      <Text style={styles.title}>{date}</Text>
+      <Text style={styles.title}>{formatDate(date)}</Text>
       <ScrollView horizontal style={styles.scroll}>
         {hour?.map(({ time_epoch, temp_c, condition }, index) => {
           const TEMP_C = Math.round(temp_c);
@@ -44,7 +61,7 @@ const styles = StyleSheet.create({
   scroll: {
     marginBottom: 50,
   },
-  title:{
+  title: {
     fontSize: 20,
     color: colors.primary,
   },
