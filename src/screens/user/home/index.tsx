@@ -47,8 +47,8 @@ const Home = () => {
       }
 
       const location = await Location.getCurrentPositionAsync({});
+      console.log(location,'location in home')
       if (location) {
-        const json = JSON.stringify(location);
         const { longitude, latitude } = location.coords;
         console.log(latitude, longitude);
         const latitudFixed = parseFloat(latitude.toFixed(4));

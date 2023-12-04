@@ -18,6 +18,7 @@ const getHour = (prop: number) => {
 };
 const formatDate = (date: string) => {
   const fecha = new Date(date);
+  fecha.setDate(fecha.getDate() + 1);
   const options = {
     weekday: "long",
     year: "numeric",
