@@ -13,7 +13,7 @@ import {
 } from "../../../api";
 import { WeatherData } from "../../../api/types";
 import { RootState } from "../../../app/store";
-import { CardHeader, CardBody } from "../../../components";
+import { CardHeader, CardBody, Button } from "../../../components";
 import { setLocation } from "../../../features/location/locationSlice";
 import { colors } from "../../../constants/colors";
 
@@ -40,30 +40,37 @@ const Home = () => {
 
   React.useEffect(() => {
     (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
-        alert("Permission to access location was denied");
-        return;
-      }
+      try {
+        let { status } = await Location.requestForegroundPermissionsAsync();
+        if (status !== "granted") {
+          alert("Permission to access location was denied");
+          return;
+        }
 
-      const location = await Location.getCurrentPositionAsync({});
-      console.log(location,'location in home')
-      if (location) {
-        const { longitude, latitude } = location.coords;
-        console.log(latitude, longitude);
-        const latitudFixed = parseFloat(latitude.toFixed(4));
-        const longitudFixed = parseFloat(longitude.toFixed(4));
-        dispatch(
-          setLocation({
-            ubication: { latitude: latitudFixed, longitude: longitudFixed },
-          })
-        );
+        const location = await Location.getCurrentPositionAsync({});
+        console.log(location, "location in home");
+        if (location) {
+          const { longitude, latitude } = location.coords;
+          console.log(latitude, longitude);
+          const latitudFixed = parseFloat(latitude.toFixed(4));
+          const longitudFixed = parseFloat(longitude.toFixed(4));
+          dispatch(
+            setLocation({
+              ubication: { latitude: latitudFixed, longitude: longitudFixed },
+            })
+          );
+        }
+      } catch (error) {
+        throw error;
       }
     })();
   }, []);
 
   return (
     <SafeAreaView style={styles.container}>
+      <View style={styles.btnContainer}>
+        <Button name="Cerrar Sesión" />
+      </View>
       <Text style={styles.headerTitle}>{name}</Text>
       {!weather ? (
         <View style={styles.activity}>

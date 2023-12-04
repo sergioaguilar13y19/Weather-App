@@ -11,7 +11,6 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.tertiary,
-    alignItems: "center",
   },
   contentBody: {
     flex: 0.8,
@@ -28,6 +27,7 @@ export const styles = StyleSheet.create({
     width: "100%",
     marginTop: 20,
     alignItems: "center",
+    justifyContent: "center",
   },
   headerTitle: {
     fontSize: 27,
@@ -35,5 +35,10 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
     color: colors.primary,
     alignSelf: "flex-start",
+  },
+  btnContainer: {
+    width: "50%",
+    alignSelf: "flex-end",
+    flex: 0.1,
   },
 });
