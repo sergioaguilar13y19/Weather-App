@@ -17,6 +17,8 @@ import { CardHeader, CardBody, Button } from "../../../components";
 import { setLocation } from "../../../features/location/locationSlice";
 import { colors } from "../../../constants/colors";
 
+import { singOut } from "../../../features/auth/authSlice";
+
 const Home = () => {
   const { name } = useSelector((state: RootState) => state.auth);
   const { ubication, isLoading } = useSelector(
@@ -66,10 +68,14 @@ const Home = () => {
     })();
   }, []);
 
+  const handleSingOut = () => {
+    dispatch(singOut());
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.btnContainer}>
-        <Button name="Cerrar Sesión" />
+        <Button name="Cerrar Sesión" onPress={handleSingOut} />
       </View>
       <Text style={styles.headerTitle}>{name}</Text>
       {!weather ? (

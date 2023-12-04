@@ -11,8 +11,8 @@ import { setUsers } from "../features/auth/authSlice";
 const Stack = createStackNavigator();
 
 export const Root = () => {
-  //const { token } = useSelector((state: RootState) => state.auth);
-  const token = true;
+  const { token } = useSelector((state: RootState) => state.auth);
+  //const token = true;
   const dispatch = useDispatch();
 
   React.useEffect(() => {

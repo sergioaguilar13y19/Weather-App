@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
   },
   formContainer: {
     flex: 0.8,
-    marginHorizontal: 10,
+    marginLeft: 15,
     justifyContent: "space-evenly",
   },
   bodyContainer: {
